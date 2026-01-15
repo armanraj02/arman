@@ -1,0 +1,231 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Container */
+.timeline-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+.main-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 80px;
+    background: linear-gradient(to right, #00d2ff, #3a7bd5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    margin: 0 auto;
+}
+
+/* The vertical line */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #00d2ff;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+}
+
+/* Timeline Item */
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Left content */
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+/* Right content */
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+/* The dots */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    background-color: #1a1a1a;
+    border: 3px solid #00d2ff;
+    top: 25px;
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.8), inset 0 0 5px rgba(0, 210, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+/* Fix dot position for right side items */
+.timeline-item:nth-child(even)::after {
+    left: -10px;
+}
+
+.timeline-item:hover::after {
+    background-color: #00d2ff;
+    transform: scale(1.2);
+}
+
+/* Content Box */
+.timeline-content {
+    padding: 30px;
+    background: #252525;
+    position: relative;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 210, 255, 0.2);
+    border-color: rgba(0, 210, 255, 0.3);
+}
+
+/* Arrow */
+.timeline-content::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    border: medium solid white;
+}
+
+/* Left arrow */
+.timeline-item:nth-child(odd) .timeline-content::before {
+    right: -10px;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent #252525;
+}
+
+/* Right arrow */
+.timeline-item:nth-child(even) .timeline-content::before {
+    left: -10px;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #252525 transparent transparent;
+}
+
+/* Text Styles */
+.date {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #00d2ff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.title {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+.description {
+    margin-bottom: 20px;
+    color: #d1d1d1;
+    font-size: 0.95rem;
+}
+
+.read-more {
+    display: inline-block;
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid #00d2ff;
+    color: #00d2ff;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.read-more:hover {
+    background: #00d2ff;
+    color: #1a1a1a;
+    font-weight: 600;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+
+    /* Move line to left */
+    .timeline::after {
+        left: 31px;
+    }
+
+    /* Full width content */
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    .timeline-item::after {
+        left: 21px;
+        /* Line width 4px centered at 31px + margin adjustment */
+    }
+
+    /* Make right side items look same as left items */
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+
+    /* Fix arrows for all to point left */
+    .timeline-item:nth-child(odd) .timeline-content::before,
+    .timeline-item:nth-child(even) .timeline-content::before {
+        left: -10px;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent #252525 transparent transparent;
+    }
+
+    /* Fix dot positioning override */
+    .timeline-item:nth-child(even)::after {
+        left: 21px;
+        /* Ensure dot aligns with the line */
+    }
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="contact_style.css">
+</head>
+
+<body>
+
+    <div class="contact-container">
+        <h1 class="contact-title">Get in touch</h1>
+
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+
+            <!-- Web3Forms Access Key -->
+            <input type="hidden" name="access_key" value="4a784b9b-4281-4801-bf03-2d3710cf5bbd">
+
+            <!-- Optional: Redirect to a success page or back to the portfolio -->
+            <!-- <input type="hidden" name="redirect" value="https://web3forms.com/success"> -->
+
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" required class="form-input">
+            </div>
+
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email" required class="form-input">
+            </div>
+
+            <div class="form-group">
+                <textarea name="message" placeholder="Your Message" required
+                    class="form-input textarea-input"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                Submit <span class="arrow">→</span>
+            </button>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
